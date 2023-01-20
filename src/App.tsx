@@ -2,13 +2,16 @@ import { useReducer, useState } from "react";
 import "./App.scss";
 import carsJson from "./assets/cars.json";
 import { CarCard } from "./CarCard";
+import { useDataContext } from "./context/DataProvider";
 import { initialState, carsReducer } from "./reducer";
 import { Car } from "./types/car";
 
 function App() {
   // const [cars, setCars] = useState(carsJson as [Car]);
-  const [state, dispatch] = useReducer(carsReducer, initialState);
+  // const [state, dispatch] = useReducer(carsReducer, initialState);
+  const { state, dispatch } = useDataContext();
   const { cars, selectedYear, filteredYears } = state;
+
   const [newCar, setNewCar] = useState<Car>({
     id: Date.now().toString(),
     name: "",
@@ -44,9 +47,11 @@ function App() {
       <h2>UseReducer - TypeScript</h2>
       <div className="selected">
         {filteredYears.map((year) => (
-          <div 
-          className={selectedYear === year ? "active" : "filter"}
-          key={year} onClick={() => handleSelectedYear(year)}>
+          <div
+            className={selectedYear === year ? "active" : "filter"}
+            key={year}
+            onClick={() => handleSelectedYear(year)}
+          >
             {year}
           </div>
         ))}
@@ -72,7 +77,7 @@ function App() {
 
       <div className="cars">
         {filteredCars.map((car) => (
-          <CarCard key={car.id} dispatch={dispatch} car={car}/>
+          <CarCard key={car.id} dispatch={dispatch} car={car} />
         ))}
       </div>
     </div>
