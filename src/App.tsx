@@ -72,7 +72,7 @@ function App() {
             setNewCar({ ...newCar, year: Number(e.target.value) })
           }
         />
-        <button type="submit">+</button>
+        <button className="add" type="submit">+</button>
       </form>
 
       <div className="cars">

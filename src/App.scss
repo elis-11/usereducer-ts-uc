@@ -5,6 +5,7 @@
   align-items: center;
   margin-top: 10rem;
   height: 80vh;
+  width: 100%;
   font-size: 20px;
   .selected {
     display: flex;
@@ -19,14 +20,32 @@
   }
   .filter:hover,
   .active {
-    background-color: #48b393;
+    background-color: #e2ece9;
     color: white;
     cursor: pointer;
     display: flex;
     justify-content: center;
     transition: all 0.1s;
   }
-
+  form {
+    margin: 1em;
+    height: 3em;
+    input {
+      height: 2em;
+      width: 15em;
+    }
+    .add {
+      background: transparent;
+      font-weight: bold;
+      color: white;
+      font-size: 20px;
+      padding-left: 0.5em;
+      border: none;
+      &:hover{
+        font-size: 24px;
+      }
+    }
+  }
   .cars {
     display: grid;
     gap: 20px;
@@ -53,7 +72,7 @@
         height: 2.5rem;
         cursor: pointer;
       }
-      & :hover{
+      & :hover {
         color: red;
       }
     }
