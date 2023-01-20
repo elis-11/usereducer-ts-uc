@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div className="Cars">
-      <h2>UseReducer - TypeScript</h2>
+      <h2>UseReducer-TypeScript-UseContext</h2>
       <div className="selected">
         {filteredYears.map((year) => (
           <div

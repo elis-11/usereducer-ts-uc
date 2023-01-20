@@ -14,7 +14,9 @@ export const DataContext = createContext<{
 
 export const useDataContext = () => useContext(DataContext);
 
-export const DataProvider = ({ children }) => {
+export const DataProvider: ({ children }: { children: any }) => JSX.Element = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(carsReducer, initialState);
 
   const sharedData = {
