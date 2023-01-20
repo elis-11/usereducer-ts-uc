@@ -39,8 +39,8 @@ export const CarCard = ({
         </div>
         <img className="image" src={car.url} alt="" />
         <div className="actions">
-          <RxUpdate className="icon"  onClick={() => handleUpdateCar(car.id)} />
-          <BsTrash  className="icon" onClick={() => handleDeleteCar(car.id)} />
+          <RxUpdate className="icon" onClick={() => handleUpdateCar(car.id)} />
+          <BsTrash className="icon" onClick={() => handleDeleteCar(car.id)} />
         </div>
         {/* <button onClick={()=>dispatch({type: "DELETE_CAR", payload: car.id})}>remove</button> */}
       </div>

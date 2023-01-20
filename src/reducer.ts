@@ -9,7 +9,7 @@ export const initialState: State = {
   filteredYears: [2018, 2019, 2020],
 };
 
-export const reducer = (state: State, action: ActionsAll): State => {
+export const carsReducer = (state: State, action: ActionsAll): State => {
   switch (action.type) {
     case "SET_FILTER_YEAR":
       return {
