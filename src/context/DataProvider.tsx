@@ -1,7 +1,11 @@
-import { createContext, Dispatch, useContext, useReducer } from "react";
-import { Car } from "../types/car";
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  useContext,
+  useReducer,
+} from "react";
 import { State } from "../types/state";
-import { ActionsAll } from "../types/action";
 import { initialState, carsReducer } from "../reducer";
 
 export const DataContext = createContext<{
@@ -14,9 +18,7 @@ export const DataContext = createContext<{
 
 export const useDataContext = () => useContext(DataContext);
 
-export const DataProvider: ({ children }: { children: any }) => JSX.Element = ({
-  children,
-}) => {
+export const DataProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(carsReducer, initialState);
 
   const sharedData = {
