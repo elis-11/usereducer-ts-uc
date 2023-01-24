@@ -10,6 +10,11 @@
       margin: 1em;
     }
   }
+  .Events{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+  }
 .Cars {
   display: flex;
   flex-direction: column;
