@@ -10,6 +10,10 @@ export const Events = () => {
     { _id: "o2", name: "Ananas" },
     { _id: "o3", name: "Apple" },
   ]);
+  const [objectNew, setObjectNew] = useState({
+    _id: Date.now().toString(),
+    name: "",
+  });
 
   // STRINGS
   const handleChangeString: React.ChangeEventHandler<HTMLInputElement> = (
@@ -25,6 +29,19 @@ export const Events = () => {
     setStrings((obj) => {
       return obj.filter((i) => i !== index);
     });
+  };
+  // OBJECT
+  const handleChangeObject: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    setObjectNew({ ...objectNew, name: e.target.value });
+  };
+  const addObject = () => {
+    setObjects([...objects, objectNew]);
+    setObjectNew({ ...objectNew, _id: Date.now().toString(), name: "" });
+  };
+  const deleteObject = (id: string) => {
+    setObjects(objects.filter((o) => o._id !== id));
   };
 
   return (
@@ -47,6 +64,28 @@ export const Events = () => {
                 {index + 1}: &nbsp;{string} &nbsp;
               </span>
               <button onClick={() => deleteString(string)}>x</button>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="Objects">
+        <h2>OBJECTS:</h2>
+        <div className="add">
+          <input
+            type="text"
+            name="name"
+            value={objectNew.name}
+            onChange={handleChangeObject}
+          />
+          <button onClick={addObject}>+</button>
+        </div>
+        <div className="objects">
+          {objects.map((object, index) => (
+            <div key={object._id} className="object">
+              <span className="name">
+                {index + 1}: &nbsp; {object.name} &nbsp;
+              </span>
+              <button onClick={() => deleteObject(object._id)}>x</button>
             </div>
           ))}
         </div>
