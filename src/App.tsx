@@ -1,7 +1,7 @@
 import { NavLink, Route, Routes } from "react-router-dom";
 import { Cars } from "./components/Cars";
 import "./App.scss";
-import { Events } from "./components/Events";
+import { Events } from "./components/events/Events";
 
 export const App = () => {
   return (
