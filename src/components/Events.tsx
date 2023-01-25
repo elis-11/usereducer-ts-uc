@@ -36,9 +36,7 @@ export const Events = () => {
     setStringNew("");
   };
   const removeString = (str: string) => {
-    setStrings((strings) => {
-      return strings.filter((string) => string !== str);
-    });
+    setStrings(strings.filter((string) => string !== str));
   };
   // OBJECTS
   const handleChangeObject: React.ChangeEventHandler<HTMLInputElement> = (
@@ -52,7 +50,7 @@ export const Events = () => {
     setObjectNew({ ...objectNew, name: "" });
   };
   const removeObject = (id: string) => {
-    setObjects(objects.filter((o) => o._id !== id));
+    setObjects(objects.filter((obj) => obj._id !== id));
   };
   // FORM - OBJECTS
   const handleFormChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -65,9 +63,7 @@ export const Events = () => {
   };
 
   const removeForm = (id: string) => {
-    setForms((forms) => {
-      return forms.filter((form) => form._id !== id);
-    });
+    setForms(forms.filter((form) => form._id !== id));
   };
 
   return (
