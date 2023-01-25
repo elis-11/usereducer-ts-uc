@@ -11,7 +11,17 @@ export const Events = () => {
     { _id: "o3", name: "Apple" },
   ]);
   const [objectNew, setObjectNew] = useState({
-    _id: Date.now().toString(),
+    _id: Math.random().toString(),
+    // _id: new Date().toString(),
+    name: "",
+  });
+  const [forms, setForms] = useState([
+    { _id: "o1", name: "Mango" },
+    { _id: "o2", name: "Ananas" },
+    { _id: "o3", name: "Apple" },
+  ]);
+  const [formNew, setFormNew] = useState({
+    _id: Math.random().toString(),
     name: "",
   });
 
@@ -21,31 +31,48 @@ export const Events = () => {
   ) => {
     setStringNew(e.target.value);
   };
-  const addString = () => {
+  const addNewString = () => {
     setStrings([...strings, stringNew]);
     setStringNew("");
   };
-  const deleteString = (index: string) => {
-    setStrings((obj) => {
-      return obj.filter((i) => i !== index);
+  const removeString = (str: string) => {
+    setStrings((strings) => {
+      return strings.filter((string) => string !== str);
     });
   };
-  // OBJECT
+  // OBJECTS
   const handleChangeObject: React.ChangeEventHandler<HTMLInputElement> = (
     e
   ) => {
     setObjectNew({ ...objectNew, name: e.target.value });
   };
-  const addObject = () => {
+
+  const addNewObject = () => {
     setObjects([...objects, objectNew]);
-    setObjectNew({ ...objectNew, _id: Date.now().toString(), name: "" });
+    setObjectNew({ ...objectNew, name: "" });
   };
-  const deleteObject = (id: string) => {
+  const removeObject = (id: string) => {
     setObjects(objects.filter((o) => o._id !== id));
+  };
+  // FORM - OBJECTS
+  const handleFormChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setFormNew({ ...formNew, name: e.target.value });
+  };
+  const onFormSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    setForms([...forms, formNew]);
+    setFormNew({ ...formNew, _id: Math.random().toString(), name: "" });
+  };
+
+  const removeForm = (id: string) => {
+    setForms((forms) => {
+      return forms.filter((form) => form._id !== id);
+    });
   };
 
   return (
     <div className="Events">
+      {/* STRINGS */}
       <div className="Strings">
         <h2>STRINGS:</h2>
         <div className="add">
@@ -55,7 +82,7 @@ export const Events = () => {
             value={stringNew}
             onChange={handleChangeString}
           />
-          <button onClick={addString}>+</button>
+          <button onClick={addNewString}>+</button>
         </div>
         <div className="strings">
           {strings.map((string, index) => (
@@ -63,11 +90,12 @@ export const Events = () => {
               <span className="str">
                 {index + 1}: &nbsp;{string} &nbsp;
               </span>
-              <button onClick={() => deleteString(string)}>x</button>
+              <button onClick={() => removeString(string)}>x</button>
             </div>
           ))}
         </div>
       </div>
+      {/* OBJECTS */}
       <div className="Objects">
         <h2>OBJECTS:</h2>
         <div className="add">
@@ -77,7 +105,7 @@ export const Events = () => {
             value={objectNew.name}
             onChange={handleChangeObject}
           />
-          <button onClick={addObject}>+</button>
+          <button onClick={addNewObject}>+</button>
         </div>
         <div className="objects">
           {objects.map((object, index) => (
@@ -85,7 +113,32 @@ export const Events = () => {
               <span className="name">
                 {index + 1}: &nbsp; {object.name} &nbsp;
               </span>
-              <button onClick={() => deleteObject(object._id)}>x</button>
+              <button onClick={() => removeObject(object._id)}>x</button>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* FORMS */}
+      <div className="Forms">
+        <h2>FORMS:</h2>
+        <div className="add">
+          <form onSubmit={onFormSubmit}>
+            <input
+              type="text"
+              name="name"
+              value={formNew.name}
+              onChange={handleFormChange}
+            />
+            <button type="submit">+</button>
+          </form>
+        </div>
+        <div className="forms">
+          {forms.map((form, index) => (
+            <div key={form._id} className="form">
+              <span className="name">
+                {index + 1}: &nbsp; {form.name} &nbsp;
+              </span>
+              <button onClick={() => removeForm(form._id)}>x</button>
             </div>
           ))}
         </div>
