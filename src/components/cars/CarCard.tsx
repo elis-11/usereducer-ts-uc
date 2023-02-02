@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { ActionsAllCars, ActionTypes } from "../../actions/car";
-import { Car } from "../../types/car";
 import { BsTrash } from "react-icons/bs";
 import { RxUpdate } from "react-icons/rx";
+import { ActionsAll, ActionTypes, Car } from "../../types";
 
 export const CarCard = ({
   dispatch,
   car,
 }: {
-  dispatch: React.Dispatch<ActionsAllCars>;
+  dispatch: React.Dispatch<ActionsAll>;
   car: Car;
 }) => {
   const [editCar, setEditCar] = useState<Car>(car);

@@ -1,9 +1,7 @@
-import { ActionsAllCars } from "./actions/car";
-import { State } from "./types/state";
+import { State } from "./actions/state";
 import carsJson from "./assets/cars.json";
 import coralsJson from "./assets/corals.json";
-import { Car } from "./types/car";
-import { ActionsAllCorals, ActionTypes, Coral } from "./types/corals";
+import { ActionsAll, ActionTypes, Car, Coral } from "./types";
 
 export const initialState: State = {
   cars: carsJson as Car[],
@@ -12,26 +10,29 @@ export const initialState: State = {
   corals: coralsJson as Coral[],
 };
 
-export const carsReducer = (state: State, action: ActionsAllCars): State => {
-  switch (action.type) {
-    case "SET_FILTER_YEAR":
+export const carsReducer = (state: State, action: ActionsAll): State => {
+  console.log("Action received: ", action);
+  const { type, payload } = action;
+
+  switch (type) {
+    case ActionTypes.SET_FILTER_YEAR:
       return {
         ...state,
-        selectedYear: action.payload,
+        selectedYear: payload,
       };
-    case "ADD_CAR":
+    case ActionTypes.ADD_CAR:
       return {
         ...state,
         cars: [...state.cars, action.payload],
       };
-    case "UPDATE_CAR":
+    case ActionTypes.UPDATE_CAR:
       return {
         ...state,
         cars: state.cars.map((car) =>
           car.id !== action.payload.id ? car : action.payload
         ),
       };
-    case "DELETE_CAR":
+    case ActionTypes.DELETE_CAR:
       return {
         ...state,
         cars: state.cars.filter((car) => car.id !== action.payload),
@@ -40,10 +41,7 @@ export const carsReducer = (state: State, action: ActionsAllCars): State => {
       return state;
   }
 };
-export const coralsReducer = (
-  state: State,
-  action: ActionsAllCorals
-): State => {
+export const coralsReducer = (state: State, action: ActionsAll): State => {
   console.log("Action received: ", action);
 
   const { type, payload } = action;

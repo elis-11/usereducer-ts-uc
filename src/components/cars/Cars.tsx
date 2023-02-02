@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { CarCard } from "./CarCard";
 import { useDataContext } from "../../context/DataProvider";
-import { Car } from "../../types/car";
 import "./Cars.scss";
-import { ActionTypes } from "../../actions/car";
+import { ActionTypes, Car } from "../../types";
 // import carsJson from "./assets/cars.json";
 
 export const Cars=()=> {

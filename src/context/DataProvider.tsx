@@ -5,8 +5,8 @@ import {
   useContext,
   useReducer,
 } from "react";
-import { State } from "../types/state";
-import { initialState, carsReducer } from "../reducer";
+import { State } from "../actions/state";
+import { initialState, carsReducer} from "../reducer";
 
 export const DataContext = createContext<{
   state: State;
