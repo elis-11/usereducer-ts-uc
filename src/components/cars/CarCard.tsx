@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { ActionsAll } from "./types/action";
-import { Car } from "./types/car";
+import { useState } from "react";
+import { ActionsAllCars, ActionTypes } from "../../actions/car";
+import { Car } from "../../types/car";
 import { BsTrash } from "react-icons/bs";
 import { RxUpdate } from "react-icons/rx";
 
@@ -8,13 +8,13 @@ export const CarCard = ({
   dispatch,
   car,
 }: {
-  dispatch: React.Dispatch<ActionsAll>;
+  dispatch: React.Dispatch<ActionsAllCars>;
   car: Car;
 }) => {
   const [editCar, setEditCar] = useState<Car>(car);
 
-  const handleUpdateCar = (carId: string) => {
-    dispatch({ type: "UPDATE_CAR", payload: editCar });
+  const handleUpdateCar = () => {
+    dispatch({ type: ActionTypes.UPDATE_CAR, payload: editCar });
   };
 
   const handleYearChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -22,7 +22,7 @@ export const CarCard = ({
   };
 
   const handleDeleteCar = (carId: string) => {
-    dispatch({ type: "DELETE_CAR", payload: carId });
+    dispatch({ type: ActionTypes.DELETE_CAR, payload: carId });
   };
 
   return (
@@ -39,7 +39,7 @@ export const CarCard = ({
         </div>
         <img className="image" src={car.url} alt="" />
         <div className="actions">
-          <RxUpdate className="icon" onClick={() => handleUpdateCar(car.id)} />
+          <RxUpdate className="icon" onClick={() => handleUpdateCar()} />
           <BsTrash className="icon" onClick={() => handleDeleteCar(car.id)} />
         </div>
         {/* <button onClick={()=>dispatch({type: "DELETE_CAR", payload: car.id})}>remove</button> */}

@@ -1,4 +1,4 @@
-import "../../App.scss";
+import "./Events.scss";
 import { Forms } from "./Forms";
 import { Objects } from "./Objects";
 import { Strings } from "./Strings";

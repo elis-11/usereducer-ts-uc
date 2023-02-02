@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { CarCard } from "../CarCard";
-import { useDataContext } from "../context/DataProvider";
-import { Car } from "../types/car";
-import "../App.scss";
+import { CarCard } from "./CarCard";
+import { useDataContext } from "../../context/DataProvider";
+import { Car } from "../../types/car";
+import "./Cars.scss";
+import { ActionTypes } from "../../actions/car";
 // import carsJson from "./assets/cars.json";
 
 export const Cars=()=> {
@@ -19,7 +20,7 @@ export const Cars=()=> {
   });
 
   const handleSelectedYear = (year: number) => {
-    dispatch({ type: "SET_FILTER_YEAR", payload: year });
+    dispatch({ type: ActionTypes.SET_FILTER_YEAR, payload: year });
   };
   console.log(selectedYear);
   let filteredCars = cars;
@@ -32,7 +33,7 @@ export const Cars=()=> {
 
   const handleNewCarSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    dispatch({ type: "ADD_CAR", payload: newCar });
+    dispatch({ type: ActionTypes.ADD_CAR, payload: newCar });
     setNewCar({
       id: Date.now().toString(),
       name: "",
