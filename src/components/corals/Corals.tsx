@@ -21,17 +21,20 @@ export const Corals = () => {
   const handleNewCoralSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     dispatch({ type: ActionTypes.CORAL_ADD, payload: newCoral });
-    setNewCoral({...newCoral,
-    name: "",
-    size: 30,
-    url: "https://source.unsplash.com/200x200/?coral",
-    })
+    setNewCoral({
+      ...newCoral,
+      name: "",
+      size: 30,
+      url: "https://source.unsplash.com/200x200/?coral/smooth_cauliflower",
+    });
   };
 
-    const handleNewCoralChange:React.ChangeEventHandler<HTMLInputElement> =(e)=>{
-  // setNewCoral(...newCoral, [e.target.name]: e.target.value);
-  // dispatch({...newCoral, payload: e.target.value});
-    }
+  const handleNewCoralChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    // setNewCoral(...newCoral, [e.target.name]: e.target.value);
+    // dispatch({...newCoral, payload: e.target.value});
+  };
 
   return (
     <div className="Corals">
@@ -63,7 +66,7 @@ export const Corals = () => {
             <img src={coral.url} alt="" />
             {/* <div className="name">{coral._id}</div> */}
             <div className="name">{coral.name}</div>
-            <div className="name">{coral.size} &nbsp; sm</div>
+            <div className="size">{coral.size} &nbsp; sm</div>
           </div>
         ))}
       </div>
