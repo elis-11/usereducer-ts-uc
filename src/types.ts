@@ -41,14 +41,19 @@ export interface ActionCoralAdd {
   type: ActionTypes.CORAL_ADD;
   payload: Coral;
 }
-
+export interface ActionCoralDelete {
+  type: ActionTypes.CORAL_DELETE;
+  payload: string;
+}
+  
 export enum ActionTypes {
   SET_FILTER_YEAR = "SET_FILTER_YEAR",
   ADD_CAR = "ADD_CAR",
   UPDATE_CAR = "UPDATE_CAR",
   DELETE_CAR = "DELETE_CAR",
-  CORAL_ADD = "CORAL_ADD",
   CORAL_SET = "CORAL_SET",
+  CORAL_ADD = "CORAL_ADD",
+  CORAL_DELETE = "CORAL_DELETE",
 }
 
 export type ActionsAll = 
@@ -58,3 +63,4 @@ export type ActionsAll =
 | ActionAddCar
 | ActionCoralAdd
 | ActionCoralSet
+| ActionCoralDelete

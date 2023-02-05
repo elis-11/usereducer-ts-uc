@@ -51,6 +51,11 @@ export const coralsReducer = (state: State, action: ActionsAll): State => {
       return { ...state, corals: payload };
     case ActionTypes.CORAL_ADD:
       return { ...state, corals: [...state.corals, payload] };
+    case ActionTypes.CORAL_DELETE:
+      return {
+        ...state,
+        corals: state.corals.filter((coral) => coral._id !== payload),
+      };
     default:
       return state;
   }
