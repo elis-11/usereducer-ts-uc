@@ -4,7 +4,6 @@ import { RxUpdate } from "react-icons/rx";
 import { ActionsAll, ActionTypes, Coral } from "../../types";
 import "./Corals.scss";
 
-
 export const CoralCart = ({
   coral,
   dispatch,
@@ -27,35 +26,35 @@ export const CoralCart = ({
 
   return (
     <>
-        <div className="coral">
-          <img src={coral.url} alt={coral.name} />
-      {editCoral ? (
-        <form onSubmit={handleSubmitCoral}>
-          <input
-            type="text"
-            name="name"
-            className="name"
-            value={editCoral.name}
-            onChange={handleChangeCoral}
-          />
-          <input
-            type="number"
-            name="size"
-            className="size"
-            value={editCoral.size}
-            onChange={handleChangeCoral}
-          />
-        </form>
-      ) : (
-        <>
-        <div className="name">{coral.name}</div>
-        <div className="size">{coral.size} &nbsp; sm</div>
-        </>
+      <div className="coral">
+        <img src={coral.url} alt={coral.name} />
+        {editCoral ? (
+          <form onSubmit={handleSubmitCoral}>
+            <input
+              type="text"
+              name="name"
+              className="name"
+              value={editCoral.name}
+              onChange={handleChangeCoral}
+            />
+            <input
+              type="number"
+              name="size"
+              className="size"
+              value={editCoral.size}
+              onChange={handleChangeCoral}
+            />
+          </form>
+        ) : (
+          <>
+            <div className="name">{coral.name}</div>
+            <div className="size">{coral.size} &nbsp; sm</div>
+          </>
         )}
-          <div className="actions">
-            <RxUpdate type="submit" />
-            <BsTrash onClick={() => handleDeleteCoral(coral._id)} />
-          </div>
+        <div className="actions">
+          <RxUpdate className="edit" type="submit" />
+          <BsTrash className="delete" onClick={() => handleDeleteCoral(coral._id)} />
+        </div>
       </div>
     </>
   );
