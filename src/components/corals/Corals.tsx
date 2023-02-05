@@ -2,11 +2,13 @@ import { useReducer, useState } from "react";
 import "./Corals.scss";
 import coralsJson from "../.././assets/corals.json";
 import { ActionTypes, Coral } from "../../types";
-import { coralsReducer, initialState } from "../../reducer";
-import { BsTrash } from "react-icons/bs";
+// import { coralsReducer, initialState } from "../../reducer";
+import { CoralCart } from "./CoralCart";
+import { useDataContext } from "../../context/DataProvider";
 
 export const Corals = () => {
-  const [state, dispatch] = useReducer(coralsReducer, initialState);
+  // const [state, dispatch] = useReducer(coralsReducer, initialState);
+  const {state, dispatch} = useDataContext()
   const { corals } = state;
 
   // const [corals, setCorals] = useState(coralsJson as [Coral]);
@@ -35,11 +37,6 @@ export const Corals = () => {
   setNewCoral({...newCoral, [e.target.name]: e.target.value});
   };
 
-  const handleDeleteCoral = (coralId: string) => {
-    dispatch({type: ActionTypes.CORAL_DELETE, payload: coralId })
-  };
-
-
   return (
     <div className="Corals">
       <h2>Corals</h2>
@@ -66,12 +63,7 @@ export const Corals = () => {
       </div>
       <div className="corals">
         {corals.map((coral) => (
-          <div key={coral._id} className="coral">
-            <img src={coral.url} alt="" />
-            <div className="name">{coral.name}</div>
-            <div className="size">{coral.size} &nbsp; sm</div>
-            <BsTrash onClick={()=>handleDeleteCoral(coral._id)} />
-          </div>
+          <CoralCart key={coral._id} dispatch={dispatch} coral={coral}/>
         ))}
       </div>
     </div>

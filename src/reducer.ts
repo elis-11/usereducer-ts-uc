@@ -43,14 +43,11 @@ export const carsReducer = (state: State, action: ActionsAll): State => {
 };
 export const coralsReducer = (state: State, action: ActionsAll): State => {
   console.log("Action received: ", action);
-
   const { type, payload } = action;
 
   switch (type) {
-    case ActionTypes.CORAL_SET:
-      return { ...state, corals: payload };
     case ActionTypes.CORAL_ADD:
-      return { ...state, corals: [...state.corals, payload] };
+      return { ...state, corals: [...state.corals, action.payload] };
     case ActionTypes.CORAL_DELETE:
       return {
         ...state,
