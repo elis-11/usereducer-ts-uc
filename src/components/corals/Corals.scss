@@ -9,12 +9,29 @@
   h2 {
     margin: 3rem;
   }
+  .newCoral{
+    display: flex;
+    form{
+      // width: 30em;
+      input{
+        width: 20em;
+        height: 3em;
+      }
+      .add{
+        width: 4em;
+        height: 3.4em;
+        background-color:white; 
+        font-weight: bold;
+      }
+    }
+  }
   .corals {
     display: grid;
     gap: 20px;
     min-height: 480px;
     margin-top: 2em;
     grid-template-columns: repeat(4, 1fr);
+
     .coral {
       display: flex;
       width: 10em;
@@ -34,12 +51,14 @@
         font-size: 20px;
         font-weight: bold;
         border: none;
+        height: 2em;
+        width: 9.7em;
         background-color: transparent;
       }
       .size {
         border: none;
         font-size: 20px;
-        width: 5em;
+        width: 9.7em;
         height: 2em;
         background-color: transparent;
       }

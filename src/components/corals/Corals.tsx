@@ -58,7 +58,7 @@ export const Corals = () => {
             //   setNewCoral({ ...newCoral, size: Number(e.target.value) })
             // }
           />
-          <button type="submit">+</button>
+          <button className="add" type="submit">+</button>
         </form>
       </div>
       <div className="corals">
