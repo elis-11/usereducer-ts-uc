@@ -27,6 +27,7 @@ export const CarCard = ({
   return (
     <div>
       <div className="car">
+        
         <div className="name">{car.name}</div>
         {/* <div className="name">{car.year}</div> */}
         <div className="name">
@@ -36,7 +37,7 @@ export const CarCard = ({
             onChange={handleYearChange}
           />
         </div>
-        <img className="image" src={car.url} alt="" />
+        <img className="image" src={car.url} alt={car.name} />
         <div className="actions">
           <RxUpdate className="icon" onClick={() => handleUpdateCar()} />
           <BsTrash className="icon" onClick={() => handleDeleteCar(car.id)} />
