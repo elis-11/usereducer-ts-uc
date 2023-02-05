@@ -3,7 +3,7 @@ export interface Car {
   name: string;
   year: number;
   url: string;
-};
+}
 
 export interface Coral {
   _id: string;
@@ -17,19 +17,19 @@ export interface Coral {
 export interface ActionAddCar {
   type: ActionTypes.ADD_CAR;
   payload: Car;
-};
+}
 export interface ActionUpdateCar {
   type: ActionTypes.UPDATE_CAR;
   payload: Car;
-};
+}
 export interface ActionDeleteCar {
   type: ActionTypes.DELETE_CAR;
   payload: string;
-};
+}
 export interface ActionSetFilterYear {
   type: ActionTypes.SET_FILTER_YEAR;
   payload: number;
-};
+}
 
 export interface ActionCoralSet {
   type: ActionTypes.CORAL_SET;
@@ -45,7 +45,12 @@ export interface ActionCoralDelete {
   type: ActionTypes.CORAL_DELETE;
   payload: string;
 }
-  
+
+export interface ActionCoralUpdate {
+  type: ActionTypes.CORAL_UPDATE;
+  payload: Coral;
+}
+
 export enum ActionTypes {
   SET_FILTER_YEAR = "SET_FILTER_YEAR",
   ADD_CAR = "ADD_CAR",
@@ -54,13 +59,15 @@ export enum ActionTypes {
   CORAL_SET = "CORAL_SET",
   CORAL_ADD = "CORAL_ADD",
   CORAL_DELETE = "CORAL_DELETE",
+  CORAL_UPDATE = "CORAL_UPDATE",
 }
 
-export type ActionsAll = 
-| ActionDeleteCar
-| ActionSetFilterYear
-| ActionUpdateCar
-| ActionAddCar
-| ActionCoralAdd
-| ActionCoralSet
-| ActionCoralDelete
+export type ActionsAll =
+  | ActionDeleteCar
+  | ActionSetFilterYear
+  | ActionUpdateCar
+  | ActionAddCar
+  | ActionCoralAdd
+  | ActionCoralSet
+  | ActionCoralDelete
+  | ActionCoralUpdate;

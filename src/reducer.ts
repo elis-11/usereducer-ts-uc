@@ -38,13 +38,20 @@ export const reducer = (state: State, action: ActionsAll): State => {
         ...state,
         cars: state.cars.filter((car) => car.id !== action.payload),
       };
-      // CORALS
+    // CORALS
     case ActionTypes.CORAL_ADD:
       return { ...state, corals: [...state.corals, action.payload] };
     case ActionTypes.CORAL_DELETE:
       return {
         ...state,
         corals: state.corals.filter((coral) => coral._id !== payload),
+      };
+    case ActionTypes.CORAL_UPDATE:
+      return {
+        ...state,
+        corals: state.corals.map((coral) =>
+          coral._id !== action.payload._id ? coral : action.payload
+        ),
       };
     default:
       return state;
