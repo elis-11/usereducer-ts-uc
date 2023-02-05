@@ -10,11 +10,12 @@ export const initialState: State = {
   corals: coralsJson as Coral[],
 };
 
-export const carsReducer = (state: State, action: ActionsAll): State => {
+export const reducer = (state: State, action: ActionsAll): State => {
   console.log("Action received: ", action);
   const { type, payload } = action;
 
   switch (type) {
+    // CARS
     case ActionTypes.SET_FILTER_YEAR:
       return {
         ...state,
@@ -37,15 +38,7 @@ export const carsReducer = (state: State, action: ActionsAll): State => {
         ...state,
         cars: state.cars.filter((car) => car.id !== action.payload),
       };
-    default:
-      return state;
-  }
-};
-export const coralsReducer = (state: State, action: ActionsAll): State => {
-  console.log("Action received: ", action);
-  const { type, payload } = action;
-
-  switch (type) {
+      // CORALS
     case ActionTypes.CORAL_ADD:
       return { ...state, corals: [...state.corals, action.payload] };
     case ActionTypes.CORAL_DELETE:
